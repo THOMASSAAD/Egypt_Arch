@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="CSS/register.css">
+</head>
+<body>
+    <div class="navbar">
+        <div><a href="home.html" class="navtitle">Egyptian Archaeological Sites</a></div>
+
+        <div class="nav-links">
+            <a href="ticket.html" title="ticket" target="blank" id="ticket">Ticket</a>
+
+            <a href="login.html" title="login" target="_blank" id="login">Login</a>
+            <a href="register.html" title="register" target="_blank" id="register">Register</a>
+            <a href="egypt_map.html" title="map" target="_blank" id="map">Egypt Map</a>
+            <a href="about_us.html" title="about us" target="_blank" id="about">About Us</a>
+            <a href="contact_us.html" title="contact us" target="_blank" id="contact">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="forms">
+        <form action="#" method="post">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="First Name" required>
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Last Name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id" placeholder="Your ID" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Submit</button>
+            <button type="button" onclick="window.location.href='login.html'">Back to Login</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <p>Copyright © 2025, All Rights Reserved</p>
+            <button class="back-to-top" onclick="scrollToTop()">↑</button>
+        </div>
+    </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>

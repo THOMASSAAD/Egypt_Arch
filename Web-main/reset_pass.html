@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="CSS/login.css" >
+</head>
+<body>
+
+    <div class="navbar">
+        <div><a href="home.html" class="navtitle">Egyptian Archaeological Sites</a></div>
+
+        <div class="nav-links">
+            <a href="ticket.html" title="ticket" target="blank" id="ticket">Ticket</a>
+
+            <a href="login.html" title="login" target="blank" id="login">Login</a>
+            <a href="register.html" title="register" target="blank" id="register">Register</a>
+            <a href="egypt_map.html" title="map" target="blank" id="map">Egypt Map</a>
+            <a href="about_us.html" title="about us" target="blank" id="about">About Us</a>
+            <a href="contact_us.html" title="contact us" target="blank" id="contact">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="forms">
+        <form>
+            <label for="oldPass">Old Password</label>
+            <input type="password" required placeholder="Enter old password" id="oldPass" name="old_password">
+
+            <label for="newPass">New Password</label>
+            <input type="password" required placeholder="Enter new password" id="newPass" name="new_password">
+
+            <label for="confirmPass">Confirm New Password</label>
+            <input type="password" required placeholder="Confirm new password" id="confirmPass" name="confirm_password">
+
+            <button id="submit" onclick="submitReset(event)">Submit</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <p>Copyright © 2025, All Rights Reserved</p>
+            <button class="back-to-top" onclick="scrollToTop()">↑</button>
+        </div>
+    </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function submitReset(event) {
+            event.preventDefault(); // Prevent form submission for now
+            const oldPass = document.getElementById('oldPass').value;
+            const newPass = document.getElementById('newPass').value;
+            const confirmPass = document.getElementById('confirmPass').value;
+
+            if (newPass !== confirmPass) {
+                alert("New passwords do not match!");
+                return;
+            }
+
+            // Simulate successful reset
+            alert("Password has been reset successfully!");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

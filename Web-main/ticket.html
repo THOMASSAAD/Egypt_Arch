@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ticket</title>
+    <link rel="stylesheet" href="CSS/ticket.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div><a href="home.html" class="navtitle">Egyptian Archaeological Sites</a></div>
+        <div class="nav-links">
+            <a href="ticket.html" title="ticket" target="blank" id="ticket">Ticket</a>
+            <a href="login.html" title="login" target="blank" id="login">Login</a>
+            <a href="register.html" title="register" target="blank" id="register">Register</a>
+            <a href="egypt_map.html" title="map" target="blank" id="map">Egypt Map</a>
+            <a href="about_us.html" title="about us" target="blank" id="about">About Us</a>
+            <a href="contact_us.html" title="contact us" target="blank" id="contact">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Reservation Section -->
+    <div class="reservation-section">
+        <h2>Reserve Your Ticket</h2>
+        <form id="reservationForm">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required><br><br>
+
+            <label for="location">Select Location:</label>
+            <select id="location" name="location" required>
+                <option value="">--Select--</option>
+                <option value="Giza Pyramids">Giza Pyramids</option>
+                <option value="Luxor Temple">Luxor Temple</option>
+                <option value="Karnak Temple">Karnak Temple</option>
+                <option value="Valley of the Kings">Valley of the Kings</option>
+            </select><br><br>
+
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId" required><br><br>
+
+            <label for="ticketQuantity">How many tickets?</label>
+            <input type="number" id="ticketQuantity" name="ticketQuantity" value="1" min="1" required><br><br>
+
+            <button type="submit">Reserve Tickets</button>
+        </form>
+    </div>
+
+    <!-- Ticket Template Display -->
+    <div class="ticket-display" id="ticketDisplay" style="display:none; margin-top: 30px;">
+        <h3>Your Tickets</h3>
+        <div id="ticketList"></div>
+    </div>
+
+    <!-- Cancel Ticket Form -->
+    <div class="cancel-section" style="margin-top: 40px;">
+        <h2>Cancel Your Ticket</h2>
+        <form id="cancelForm">
+            <label for="cancelId">Enter Ticket ID or User ID:</label>
+            <input type="text" id="cancelId" name="cancelId" required>
+            <button type="submit">Cancel Ticket</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <p>Copyright © 2025, All Rights Reserved</p>
+            <button class="back-to-top" onclick="scrollToTop()">↑</button>
+        </div>
+    </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Generate random ticket ID
+        function generateTicketId() {
+            return 'TID' + Math.floor(Math.random() * 100000);
+        }
+
+        // Initialize an array to store tickets
+        let allTickets = [];
+
+        // Handle reservation form
+        document.getElementById('reservationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const userId = document.getElementById('userId').value;
+            const date = document.getElementById('date').value;
+            const location = document.getElementById('location').value;
+            const ticketQuantity = parseInt(document.getElementById('ticketQuantity').value);
+
+            // Generate tickets
+            let ticketListHTML = '';
+            for (let i = 0; i < ticketQuantity; i++) {
+                const ticketId = generateTicketId();
+                const ticketData = {
+                    userId: userId,
+                    ticketId: ticketId,
+                    date: date,
+                    location: location
+                };
+                allTickets.push(ticketData); // Store the ticket data
+
+                ticketListHTML += `
+                    <div class="ticket-item">
+                        <h4>Ticket ${i + 1}</h4>
+                        <p><strong>User ID:</strong> ${userId}</p>
+                        <p><strong>Ticket ID:</strong> ${ticketId}</p>
+                        <p><strong>Date:</strong> ${date}</p>
+                        <p><strong>Location:</strong> ${location}</p>
+                    </div>
+                    <hr>
+                `;
+            }
+
+            // Append the new tickets to the ticket list
+            document.getElementById('ticketList').innerHTML = ticketListHTML;
+            document.getElementById('ticketDisplay').style.display = 'block';
+        });
+
+        // Handle cancel form
+        document.getElementById('cancelForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const cancelId = document.getElementById('cancelId').value;
+
+            // Find and remove ticket from the array
+            const ticketIndex = allTickets.findIndex(ticket => ticket.ticketId === cancelId || ticket.userId === cancelId);
+            if (ticketIndex > -1) {
+                allTickets.splice(ticketIndex, 1);
+                alert(`Ticket with ID "${cancelId}" has been canceled.`);
+            } else {
+                alert(`No ticket or user found with ID "${cancelId}".`);
+            }
+
+            // Optionally, you could update the ticket list to reflect cancellations
+        });
+    </script>
+
+</body>
+
+</html>

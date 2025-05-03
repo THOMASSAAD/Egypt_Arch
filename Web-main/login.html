@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="CSS/login.css" >
+</head>
+<body>
+
+    <div class="navbar">
+        <div > <a href="home.html" class="navtitle">Egyptian Archaeological Sites </a> </div>
+
+        <div class="nav-links">
+            <a href="ticket.html" title="ticket" target="blank" id="ticket">Ticket</a>
+
+            <a href="login.html" title="login" target="blank" id="login">Login</a>
+            <a href="register.html" title="register" target="blank" id="register">Register</a>
+            <a href="egypt_map.html" title="map" target="blank" id="map">Egypt Map</a>
+            <a href="about_us.html" title="about us" target="blank" id="about">About Us</a>
+            <a href="contact_us.html" title="contact us" target="blank" id="contact">Contact Us</a>
+        </div>
+    </div>
+
+
+    <div class="forms">
+
+        <form>
+            <label for="user">username</label>
+            <input type="text" required placeholder="username" id="user" name="username">
+
+            <label for="pass">password</label>
+            <input type="password" required placeholder="password" id="pass" name="password">
+
+            <button id="login" onclick="window.location.href='home.html'">login</button>
+            <button id="register" onclick="window.location.href='register.html'"> register </button>
+
+
+
+            <button id="reset"  onclick="window.location.href='reset_pass.html'">reset password </button>
+
+        </form>
+
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <p>Copyright © 2025, All Rights Reserved</p>
+            <button class="back-to-top" onclick="scrollToTop()">↑</button>
+        </div>
+    </div>
+    <script>
+        function scrollToTop() {
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+      }
+
+    </script>
+
+    
+</body>
+</html>

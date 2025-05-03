@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shali Village - Tourist Information</title>
+    <link rel="stylesheet" href="Giza.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Shali Fortress Village</h1>
+            <p id="c1">Ancient Mud-Brick Settlement</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero-section">
+            <div class="pyramid-image-container">
+                <img src="Images/Shali Fortress Village (2).jpg" class="pyramid-image" alt="Shali Village">
+            </div>
+            <div class="description-card">
+                <h2>About Shali Village</h2>
+                <p>The iconic ruins of this 13th-century fortress town made of kershef (salt and mud-brick) dominate
+                    Siwa Oasis. The labyrinthine structures were inhabited until the 20th century when heavy rains
+                    caused damage. The site offers panoramic views of the oasis and insight into the unique Berber
+                    culture of Siwa.</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <h2>Quick Facts</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h3>Construction Material</h3>
+                        <p>Kershef (salt, mud, and palm trunks)</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Location</h3>
+                        <p>Siwa Oasis, Matrouh Governorate, Egypt</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="amenities-container">
+                <div class="card">
+                    <h2>Nearby Hotels</h2>
+                    <div class="hotels">
+                        <div class="hotel">
+                            <h3>Adrère Amellal</h3>
+                            <p>Luxury eco-lodge near the village</p>
+                            <p>⭐️⭐️⭐️⭐️⭐️</p>
+                        </div>
+                        <div class="hotel">
+                            <h3>Shali Lodge</h3>
+                            <p>Traditional Siwan accommodations</p>
+                            <p>⭐️⭐️⭐️</p>
+                        </div>
+                        <div class="hotel">
+                            <h3>Siwa Paradise Hotel</h3>
+                            <p>Comfortable oasis retreat</p>
+                            <p>⭐️⭐️⭐️⭐️</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Nearby Restaurants</h2>
+                    <div class="restaurants">
+                        <div class="restaurant">
+                            <h3>Abdu's Restaurant</h3>
+                            <p>Authentic Siwan cuisine</p>
+                            <p>🍽️ Local Specialty</p>
+                        </div>
+                        <div class="restaurant">
+                            <h3>Alexander the Great Restaurant</h3>
+                            <p>Oasis-view dining</p>
+                            <p>🍽️ International</p>
+                        </div>
+                        <div class="restaurant">
+                            <h3>Oasis Palm</h3>
+                            <p>Traditional date-based dishes</p>
+                            <p>🍽️ Local Cuisine</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card map-container">
+                    <h2>Location Map</h2>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27864.51922149481!2d25.488531118557706!3d29.192216057376417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x147aaef8c649a39d%3A0x43c597bf7bfa09b7!2sSiwa%20Oasis!5e0!3m2!1sen!2seg!4v1744913555867!5m2!1sen!2seg"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="ticket-section">
+        <div class="ticket-container">
+            <div class="ticket-icon">
+                <div class="ticket-info">
+                    <h2>Tickets</h2>
+                </div>
+                <img src="icon.png" alt="Ticket Icon">
+            </div>
+            <div class="ticket-prices">
+                <p><strong>ENTRY IS FREE</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <p class="ticket-note">.</p>
+
+    <div class="gallery-header">
+        <h2>Image Gallery</h2>
+        <label class="upload-button">
+            Upload Image
+            <input type="file" class="upload-input">
+        </label>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <a target="_blank" href="img_5terre.jpg">
+                <img src="shali1.jpg" alt="Fortress Ruins">
+            </a>
+            <div class="desc">Ancient Mud-Brick Structures</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <a target="_blank" href="img_forest.jpg">
+                <img src="shali2.jpg" alt="Village Overview">
+            </a>
+            <div class="desc">Panoramic View of Shali</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <a target="_blank" href="img_lights.jpg">
+                <img src="shali3.jpg" alt="Narrow Streets">
+            </a>
+            <div class="desc">Labyrinthine Alleyways</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <a target="_blank" href="img_mountains.jpg">
+                <img src="shali4.jpg" alt="Sunset View">
+            </a>
+            <div class="desc">Sunset Over the Ruins</div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <script>
+        document.querySelector('.upload-input').addEventListener('change', function (e) {
+            if (e.target.files && e.target.files[0]) {
+                alert('Image uploaded successfully!');
+            }
+        });
+    </script>
+
+    <footer>
+        <p>Copyright © 2025, All Rights Reserved</p>
+        <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">&#9650;</button>
+    </footer>
+
+    <script>
+        document.querySelector('.upload-icon').addEventListener('click', function () {
+            const fileInput = this.querySelector('.upload-input');
+            fileInput.click();
+
+            fileInput.addEventListener('change', function (e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        alert('Image uploaded successfully!');
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
