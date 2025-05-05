@@ -172,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!$email) {
                 echo '<div class="alert alert-danger">Invalid email format.</div>';
             } elseif (strlen($pass) < 8) {
-                echo '<div class="alert alert-danger">Password must be at least 6 characters long.</div>';
+                echo '<div class="alert alert-danger">Password must be at least 8 characters long.</div>';
             } else {
                 $newpass = password_hash($pass, PASSWORD_DEFAULT);
                 $result = $crud->insertuser($firstname, $lastname, $email, $newpass, $id);

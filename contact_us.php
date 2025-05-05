@@ -3,102 +3,113 @@ $title = "Contact_Us";
 require_once 'include/header.php'; 
 ?>
     <style>
-        body {
-    background-image: url('background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-
-    /* Adjusting padding to make room for footer only */
-    padding-bottom: 60px;
+      body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0 15px 60px; /* Add horizontal padding for better look */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.footer {
-    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent to match navbar */
-    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    padding: 20px 0;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    z-index: 1000; /* Ensures footer stays above other content */
-    font-family: Arial, sans-serif; /* Consistent with the rest of the page */
+.contact-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95); /* semi-transparent for background harmony */
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(3px);
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between; /* Spreads content nicely */
-    align-items: center;
-    max-width: 1200px; /* Matches grid-container width */
-    margin: 0 auto;
-    padding: 0 20px;
+.contact-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #222;
+  font-size: 2rem;
+  letter-spacing: 1px;
 }
 
-.footer-content p {
-    margin: 0;
-    font-size: 14px;
-    color: #131550; /* Matches nav and search bar text color */
-    font-weight: 400;
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
 }
 
-.back-to-top {
-    background-color: #007bff; /* Matches the 'read-more' button color */
-    color: white;
-    border: none;
-    border-radius: 50%; /* Circular button */
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
-.back-to-top:hover {
-    background-color: #00539f; /* Darker shade on hover, matches search button hover */
-    transform: translateY(-3px); /* Slight lift effect */
+.contact-form button {
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.back-to-top:focus {
-    outline: none; /* Removes default outline */
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Accessible focus ring */
+.contact-form button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
-/* Responsive Design for Footer */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column; /* Stack items vertically on smaller screens */
-        gap: 10px;
-        text-align: center;
-    }
-
-    .back-to-top {
-        width: 36px;
-        height: 36px;
-        font-size: 18px;
-    }
+#successMessage {
+  text-align: center;
+  margin-top: 20px;
+  color: green;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
-@media (max-width: 480px) {
-    .footer {
-        padding: 15px 0; /* Slightly less padding */
-    }
-
-    .footer-content p {
-        font-size: 12px; /* Smaller text for very small screens */
-    }
-
-    .back-to-top {
-        width: 32px;
-        height: 32px;
-        font-size: 16px;
-    }
+.hidden {
+  display: none;
 }
+
     </style>
+  <div class="contact-container">
+    <h1>Contact Us</h1>
+    <form class="contact-form" id="contactForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="subject" placeholder="Subject" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div id="successMessage" class="hidden">✅ Your message has been sent!</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); 
+      form.reset(); 
+      successMessage.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
+
+    
+</body>   

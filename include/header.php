@@ -107,6 +107,6 @@
             <a href="contact_us.php" title="Contact Us" target="_blank" id="contact">Contact Us</a>
         </div>
     </div>
-</body>
+<!-- </body>
 
-</html>
+</html> -->

@@ -13,18 +13,70 @@ if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $orig_file = $_FILES["picture"]["tmp_name"];
-    $target_dir = 'uploads/';
-    $filename = basename($_FILES["picture"]["name"]);
-    $destination = $target_dir . $filename;
-    move_uploaded_file($orig_file, $destination); 
+    if (!isset($_FILES["picture"]) || $_FILES["picture"]["error"] !== UPLOAD_ERR_OK) {
+        error_log("File upload failed with error code: " . ($_FILES["picture"]["error"] ?? "unknown"));
+        die("File upload failed.");
+    }
 
+    $max_file_size = 10 * 1024 * 1024; 
+    if ($_FILES["picture"]["size"] > $max_file_size) {
+        error_log("File size exceeds limit: " . $_FILES["picture"]["size"] . " bytes");
+        die("File size exceeds the maximum limit of 10MB.");
+    }
+
+    // Validate file extension
+    $ext = strtolower(pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION));
+    $allowed_ext = ['jpg', 'jpeg', 'png', 'gif'];
+    if (empty($ext) || !in_array($ext, $allowed_ext)) {
+        error_log("Invalid file extension: $ext");
+        die("Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.");
+    }
+
+    // Validate file MIME type to ensure it's an image
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime = finfo_file($finfo, $_FILES["picture"]["tmp_name"]);
+    finfo_close($finfo);
+    $allowed_mimes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!in_array($mime, $allowed_mimes)) {
+        error_log("Invalid MIME type: $mime");
+        die("Invalid file content. Only image files are allowed.");
+    }
+
+    $orig_file = $_FILES["picture"]["tmp_name"];
+    $new_filename = uniqid('img_', true) . '.' . $ext;
+    $target_dir = 'uploads/';
+    
+    $destination = $target_dir . $new_filename;
+
+    // Move the uploaded file
+    if (!move_uploaded_file($orig_file, $destination)) {
+        error_log("Failed to move uploaded file to: $destination");
+        die("Failed to move uploaded file.");
+    }
+
+    // Get location ID
     $location_name = "Al-Fustat (Old Cairo)";
     $location = $crud->getlocationid($location_name);
-    $crud->insertpic($id, $destination, $location);
+    if (!$location) {
+        error_log("Invalid location: $location_name");
+        die("Invalid location: $location_name");
+    }
+
+    // Insert picture into database
+    if (!$crud->insertpic($id, $destination, $location)) {
+        error_log("Failed to insert picture into database for user ID: $id");
+        die("Failed to save picture information.");
+    }
+
+    // Redirect on success
+    if (headers_sent()) {
+        error_log("Headers already sent, cannot redirect.");
+        die("Headers already sent, cannot redirect.");
+    }
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
+?>
 ?>
 </head>
 
